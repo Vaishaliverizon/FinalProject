@@ -1,56 +1,41 @@
-package org.verizon.CSP_B1Api.Controller;
+package org.verizon.CSP.controller;
+
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.web.bind.annotation.PutMapping;
-
 import org.springframework.web.bind.annotation.RequestBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
-
-import org.verizon.CSP_B1Api.model.Ordermodel;
-
-import org.verizon.CSP_B1Api.service.Orderservice;
+import org.verizon.CSP.model.Ordermodel;
+import org.verizon.CSP.service.OrderService;
 
 @RestController
-
-@RequestMapping("/api/ordermodel")
-
-public class Ordercontroller {
-
-	private Orderservice orderservice;
-
+@RequestMapping("/api/order")
+public class OrderController {
+	
+	private OrderService orderservice;
+	
 	@Autowired
-	public Ordercontroller(Orderservice orderservice) {
+	public OrderController(OrderService orderservice) {
+		
 		this.orderservice = orderservice;
-
 	}
+	
 	@RequestMapping("/allorder")
-
 	public List<Ordermodel> getAllOrdermodel(){
-
 		return orderservice.getAllOrdermodel();
+		
 	}
-
-	@PostMapping("/insertcatalog")
-	public Ordermodel createordermodel(@RequestBody Ordermodel catmod)
+	
+	@PostMapping("/inserorder")
+	public Ordermodel createOrdermodel(@RequestBody Ordermodel ordermodel)
 	{
-		return orderservice.createcatalogmodel(catmod);
+		return orderservice.createOrdermodel(ordermodel);
 
 }
-
 }
+	
